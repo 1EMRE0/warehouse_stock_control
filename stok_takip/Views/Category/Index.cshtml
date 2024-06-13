@@ -1,0 +1,45 @@
+﻿@model List<stok_takip.Data.Models.Category>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Category List</h1>
+<br />
+@using (Html.BeginForm())
+{
+    <p>
+        Food Name: @Html.TextBox("p")
+        <input type="submit" value="Find" />
+    </p>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <td>ID</td>
+        <td>Category Name</td>
+        <td>Status</td>
+        <td>Delete</td>
+        <td>Update</td>
+    </tr>
+
+    @foreach(var x in Model)
+    {
+        <tr>
+            <td> @x.CategoryId </td>
+            <td> @x.CategoryName </td>
+            <td> @x.Status </td>
+            <td> <a href="/Category/CategoryDelete/@x.CategoryId" class="btn btn-danger">Delete</a> </td>
+            <td> <a href="/Category/CategoryGet/@x.CategoryId" class="btn btn-success">Update</a> </td>
+
+           
+
+        </tr>
+
+
+    }
+    
+</table>
+<a href="/Category/CategoryAdd" class="btn btn-primary">New Category</a>
